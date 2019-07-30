@@ -3,6 +3,7 @@
 
 from flask_testing import TestCase
 
+from project import db
 from project import create_app
 
 app = create_app()
@@ -13,10 +14,10 @@ class BaseTestCase(TestCase):
         app.config.from_object('project.config.TestingConfig')
         return app
 
-    def set_up(self):
+    def setUp(self):
         db.create_all()
         db.session.commit()
 
-    def tear_down(self):
+    def tearDown(self):
         db.session.remove()
         db.drop_all()

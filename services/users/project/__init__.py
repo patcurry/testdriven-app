@@ -3,7 +3,7 @@
 
 import os
 
-from flask import Flask
+from flask import Flask  # new
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -11,11 +11,11 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
+# new
 def create_app(script_info=None):
-    
+
     # instantiate the app
     app = Flask(__name__)
-
 
     # set config
     app_settings = os.getenv('APP_SETTINGS')
@@ -34,3 +34,4 @@ def create_app(script_info=None):
         return {'app': app, 'db': db}
 
     return app
+
